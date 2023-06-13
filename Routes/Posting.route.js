@@ -10,8 +10,11 @@ postingRoute.get("/",async(req,res)=>{
     catch(err){res.status(400).send(err)}
     })
     postingRoute.get("/jobs",async(req,res)=>{
+        const filter={};
+        if(req.query.Role){filter.Role={$eq:req.query.Role}}
+        console.log(req.query);
         try{
-            const jobs=await postingModel.find(req.query);
+            const jobs=await postingModel.find(filter);
             res.status(200).send(jobs);
         }
         catch(err){res.status(400).send(err)}

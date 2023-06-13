@@ -7,7 +7,8 @@ const postingSchema=mongoose.Schema({
      "Level" :String,
  "Position" :String,
     "Language" :String,
-     "Contract" :String
+     "Contract" :String,
+     "postedat":String
 });
 const postingModel=mongoose.model("posting",postingSchema);
 module.exports={postingModel};

@@ -11,7 +11,7 @@ postingRoute.get("/",async(req,res)=>{
     })
     postingRoute.get("/jobs",async(req,res)=>{
         try{
-            const jobs=await postingModel.find();
+            const jobs=await postingModel.find(req.query);
             res.status(200).send(jobs);
         }
         catch(err){res.status(400).send(err)}

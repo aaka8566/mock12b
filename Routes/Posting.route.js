@@ -12,6 +12,7 @@ postingRoute.get("/",async(req,res)=>{
     postingRoute.get("/jobs",async(req,res)=>{
         const filter={};
         if(req.query.Role){filter.Role={$eq:req.query.Role}}
+        if(req.query.postedat){filter.postedat=-1}
         console.log(req.query);
         try{
             const jobs=await postingModel.find(filter);

@@ -19,7 +19,7 @@ postingRoute.get("/",async(req,res)=>{
 postingRoute.post("/post",async(req,res)=>{
 try{
     const job=await postingModel(req.body);
-    job.save();
+    await job.save();
     res.status(200).send(job);
 }
 catch(err){res.status(400).send(err)}

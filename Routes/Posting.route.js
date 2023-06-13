@@ -10,12 +10,12 @@ postingRoute.get("/",async(req,res)=>{
     catch(err){res.status(400).send(err)}
     })
     postingRoute.get("/jobs",async(req,res)=>{
-        const filter={};
+        const filter={};const sort={};
         if(req.query.Role){filter.Role={$eq:req.query.Role}}
-        if(req.query.postedat){filter.postedat=-1}
+        if(req.query.postedat){sort.postedat=req.query.postedat}
         console.log(req.query);
         try{
-            const jobs=await postingModel.find(filter);
+            const jobs=await postingModel.find(filter).sort({postedat:sort.postedat});
             res.status(200).send(jobs);
         }
         catch(err){res.status(400).send(err)}
